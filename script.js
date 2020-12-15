@@ -1,5 +1,5 @@
 /**
- * Programa fica esperando um evento de click na torre onde está as discos (torre1)
+ * Programa fica esperando um evento de click acontecer
  * chama a função que vai SUMIR com o primeiro dico da pilha, disco menor
  * a flag AGUARDANDO DESTINO será setada
  * enquando o usuário não disparar um dos eventos de click em alguma torre o programa trava
@@ -9,4 +9,33 @@
 
 // listener para eventos de click nas torres
 
-document.getElementById("torre1").addEventListener("click", torre1);
+document.getElementById("torres").addEventListener("click", onClick);
+
+let troca = false;
+let removida;
+
+function onClick(ev) {
+  //   console.log(ev.target.id);
+
+  let tower = document.getElementById(ev.target.id);
+
+  if (!troca) {
+    if (tower.childElementCount > 0) {
+      //caso tenha disco
+
+      removida = tower.removeChild(tower.lastElementChild);
+      console.log(removida);
+      console.log(tower);
+
+      troca = true;
+    }
+  } else {
+    tower.appendChild(removida);
+
+    troca = false;
+  }
+}
+
+function adiciona(disco) {
+  document.getElementById("torres").addEventListener("click");
+}
