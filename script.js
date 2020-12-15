@@ -24,18 +24,20 @@ function onClick(ev) {
       //caso tenha disco
 
       removida = tower.removeChild(tower.lastElementChild);
-      console.log(removida);
+      console.log(removida.dataset.size);
       console.log(tower);
 
       troca = true;
     }
   } else {
-    tower.appendChild(removida);
-
-    troca = false;
+    if (tower.childElementCount > 0) {
+      if (removida.dataset.size < tower.lastElementChild.dataset.size) {
+        tower.appendChild(removida);
+        troca = false;
+      }
+    } else {
+      tower.appendChild(removida);
+      troca = false;
+    }
   }
-}
-
-function adiciona(disco) {
-  document.getElementById("torres").addEventListener("click");
 }
