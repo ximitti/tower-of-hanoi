@@ -21,17 +21,23 @@ for (let i = 1; i <= 3; i++) {
   torre.className = "torre-forma";
   torres.appendChild(torre);
 }
+
+for (let i = 1; i <= 3; i++) {
+  const haste = document.createElement("div");
+  haste.id = `haste${i}`;
+  haste.className = "hastes";
+  torres.appendChild(haste);
+}
+
 const torre1 = document.getElementById("torre1");
 for (let i = 4; i >= 1; i--) {
+  // for (let i = 3; i >= 1; i--) {
   const disco = document.createElement("div");
   disco.id = `disco${i}`;
   disco.setAttribute("data-size", i);
   disco.className = "discForm";
   torre1.appendChild(disco);
 }
-
-// const discos = document.getElementsByClassName("discForm");
-// discos[0].addEventListener("click", onClick);
 
 let troca = false;
 let removida;
@@ -41,6 +47,8 @@ const span = document.createElement("span");
 const minJogadas = document.createElement("span");
 minJogadas.innerText = 2 ** torre1.childElementCount - 1;
 document.getElementById("minimo").appendChild(minJogadas);
+span.innerText = cont;
+document.getElementById("jogadas").appendChild(span);
 
 function checkVitoria() {
   const torre2 = document.getElementById("torre2");
@@ -102,20 +110,7 @@ function resetClick() {
     disco.className = "discForm";
     torre1.appendChild(disco);
   }
-  document.getElementById(
-    "jogadas"
-  ).innerHTML = `Total de jogadas: <span>0</span>`;
-
-  //   if (torre2.childElementCount !== 0) {
-  //     for (let i = torre2.childElementCount; i >= 1; i--) {
-  //       const disco = torre2.removeChild(torre2.firstElementChild);
-  //       torre1.appendChild(disco);
-  //     }
-  //   }
-  //   if (torre3.childElementCount !== 0) {
-  //     for (let i = torre3.childElementCount; i >= 1; i--) {
-  //       const disco = torre3.removeChild(torre3.firstElementChild);
-  //       torre1.appendChild(disco);
-  //     }
-  //   }
+  cont = 0;
+  span.innerText = cont;
+  document.getElementById("jogadas").appendChild(span);
 }

@@ -20,7 +20,6 @@ header h1 {
 }
 
 main#container {
-  border: 1px solid #000;
   margin: 0 auto;
   max-width: 550px;
   width: 100%;
@@ -35,19 +34,15 @@ main#container div#torres {
   min-height: 200px;
   height: 100%;
   display: flex;
+  position: relative;
   flex-flow: row nowrap;
 }
-main#container div#torre1 {
-  background-color: #f00;
-}
+
 main#container div#torre2 {
-  background-color: #0f0;
-}
-main#container div#torre3 {
-  background-color: #00f;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
 }
 .torre-forma {
-  border: 1px solid #000;
   min-width: 180px;
   width: 100%;
   min-height: 200px;
@@ -59,50 +54,86 @@ main#container div#torre3 {
 }
 
 div#disco1 {
-  border: 1px solid #000;
+  background-color: #009;
   width: 50px;
   height: 30px;
 }
 div#disco2 {
-  border: 1px solid #000;
+  background-color: #929;
   width: 75px;
   height: 30px;
 }
 div#disco3 {
-  border: 1px solid #000;
+  background-color: #090;
   width: 100px;
   height: 30px;
 }
 div#disco4 {
-  border: 1px solid #000;
+  background-color: #900;
   width: 125px;
   height: 30px;
 }
 
 div#controle {
-  border: 1px solid #000;
-  margin: 0 auto;
+  margin: 10px auto;
   max-width: 550px;
   width: 100%;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 div#controle div#placar {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-around;
+  width: 100%;
 }
-div#placar div#minimo {
-  border: 1px solid #000;
+
+span {
+  padding: 0 0 0 7px;
 }
-div#placar div#jogadas {
-  border: 1px solid #000;
+
+div#botao {
+  padding: 5px;
 }
-div#controle button#reset {
+div#botao button#reset {
   border: none;
-  overline: none;
+  box-shadow: 0 0 5px #808080;
+  text-transform: uppercase;
+}
+div#controle button#reset:hover {
+  cursor: pointer;
 }
 
 div.discForm:hover {
   cursor: pointer;
   box-shadow: 0 0 5px 3px #808080;
+}
+
+div#haste1 {
+  top: 50px;
+  left: 87px;
+}
+div#haste2 {
+  top: 50px;
+  left: 270px;
+}
+div#haste3 {
+  top: 50px;
+  left: 453px;
+}
+
+.hastes {
+  max-width: 10px;
+  width: 100%;
+  max-height: 150px;
+  height: 100%;
+  position: absolute;
+  z-index: -10;
+  background-color: #000;
+}
+
+.discForm {
+  border: 1px solid #000;
+  border-radius: 5px;
 }
