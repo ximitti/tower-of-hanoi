@@ -8,15 +8,50 @@
  */
 
 // listener para eventos de click nas torres
+const minJogadas = document.getElementById("minimo");
 
-const start = () => {};
+const start = () => {
+  const discNumbers = document.getElementById("in").value;
+
+  if (discNumbers > 4) {
+    alert("Número máximo permitido = 4!");
+    return null;
+  }
+  const torre1 = document.getElementById("torre1");
+
+  // console.log(discNumbers);
+
+  torre1.innerHTML = "";
+  for (let i = discNumbers; i >= 1; i--) {
+    // for (let i = 3; i >= 1; i--) {
+    const disco = document.createElement("div");
+    disco.id = `disco${i}`;
+    disco.setAttribute("data-size", i);
+    disco.className = "discForm";
+    torre1.appendChild(disco);
+  }
+  minJogadas.innerHTML = "";
+  const span = document.createElement("span");
+  span.innerText = `Movimentos mínimos: ${2 ** torre1.childElementCount - 1}`;
+  minJogadas.appendChild(span);
+};
 
 const checkVitoria = () => {
+  const discNumbers = document.getElementById("in").value;
+
   const torre2 = document.getElementById("torre2");
   const torre3 = document.getElementById("torre3");
+  // console.log(typeof discNumbers);
+  // console.log(typeof torre2.childElementCount);
+  // console.log(typeof torre3.childElementCount);
 
-  if (torre2.childElementCount === 4 || torre3.childElementCount === 4) {
-    alert("Parabéns você VENCEU!");
+  if (
+    torre2.childElementCount === Number(discNumbers) ||
+    torre3.childElementCount === Number(discNumbers)
+  ) {
+    alert(`Parabéns você VENCEU! Total de jogadas: ${cont}`);
+
+    reset();
   }
 };
 
@@ -59,11 +94,13 @@ const reset = () => {
   const torre2 = document.getElementById("torre2");
   const torre3 = document.getElementById("torre3");
 
+  const discNumbers = document.getElementById("in").value;
+
   torre1.innerHTML = "";
   torre2.innerHTML = "";
   torre3.innerHTML = "";
 
-  for (let i = 4; i >= 1; i--) {
+  for (let i = discNumbers; i >= 1; i--) {
     const disco = document.createElement("div");
     disco.id = `disco${i}`;
     disco.setAttribute("data-size", i);
@@ -82,6 +119,7 @@ const startButton = document.getElementById("start");
 
 torres.addEventListener("click", onClick);
 resetButton.addEventListener("click", reset);
+startButton.addEventListener("click", start);
 
 for (let i = 1; i <= 3; i++) {
   const torre = document.createElement("div");
@@ -97,23 +135,10 @@ for (let i = 1; i <= 3; i++) {
   torres.appendChild(haste);
 }
 
-const torre1 = document.getElementById("torre1");
-for (let i = 4; i >= 1; i--) {
-  // for (let i = 3; i >= 1; i--) {
-  const disco = document.createElement("div");
-  disco.id = `disco${i}`;
-  disco.setAttribute("data-size", i);
-  disco.className = "discForm";
-  torre1.appendChild(disco);
-}
-
 let troca = false;
 let removida;
 let cont = 0;
 
 const span = document.createElement("span");
-const minJogadas = document.createElement("span");
-minJogadas.innerText = 2 ** torre1.childElementCount - 1;
-document.getElementById("minimo").appendChild(minJogadas);
 span.innerText = cont;
 document.getElementById("jogadas").appendChild(span);
